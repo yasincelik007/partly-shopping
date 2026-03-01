@@ -7,7 +7,7 @@ This plan translates the high-level vision in README.md into concrete, verifiabl
 ## Phase 0 — Planning & Repository
 
 - [x] Create this phases.md from README insights
-- [ ] Commit and push phases.md to remote
+- [x] Commit and push phases.md to remote
 
 Acceptance criteria
 - A single phases.md exists at repo root with end-to-end plan
@@ -32,10 +32,10 @@ Acceptance criteria
 ## Phase 2 — Graph Data Model (Neo4j)
 
 Deliverables
-- [ ] Neo4j schema for products → assemblies → parts
-- [ ] Constraints for unique IDs and relationships
-- [ ] Sample dataset (e.g., Ducati hierarchy) loaded
-- [ ] API adapter to fetch part metadata by mesh/part_id
+- [x] Neo4j schema for products → assemblies → parts
+- [x] Constraints for unique IDs and relationships
+- [x] Sample dataset (e.g., Ducati hierarchy) loaded
+- [x] API adapter to fetch part metadata by mesh/part_id
 
 Acceptance criteria
 - Querying a selected part_id returns material, torque, weight, compatibility

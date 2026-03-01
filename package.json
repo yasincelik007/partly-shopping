@@ -6,18 +6,24 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "dev:server": "tsx server/index.ts",
+    "seed:neo4j": "tsx server/seed.ts"
   },
   "dependencies": {
     "@react-three/drei": "^9.105.6",
     "@react-three/fiber": "^8.16.3",
+    "fastify": "^4.27.2",
+    "neo4j-driver": "^5.25.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "three": "^0.164.1"
   },
   "devDependencies": {
+    "@types/node": "^20.11.28",
     "@types/react": "^18.2.66",
     "@types/react-dom": "^18.2.22",
+    "tsx": "^4.9.3",
     "typescript": "^5.4.2",
     "vite": "^5.1.4"
   }
