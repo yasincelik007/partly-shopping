@@ -45,7 +45,7 @@ Status
 - [x] Implemented schema constraints and indexes
 - [x] Seeded Ducati sample hierarchy
 - [x] Implemented GET /part/:id API in server
-- [ ] Verified live query against running Neo4j instance
+- [ ] Verified live query against running Neo4j instance (run verify script locally)
 
 ## Phase 3 — AI Matching (PARTLY‑Sense)
 
@@ -62,10 +62,10 @@ Acceptance criteria
 ## Phase 4 — Scraper Engine (FastAPI + Workers)
 
 Deliverables
-- [ ] FastAPI service with distributed worker architecture
-- [ ] Rate-limit adaptive crawlers for at least 2 marketplaces (e.g., Amazon, eBay)
-- [ ] Normalization layer for price, stock, seller reliability
-- [ ] 15-minute stock refresh scheduling
+- [x] FastAPI service with worker loop
+- [x] Rate-limit adaptive scrapers for Amazon and eBay (stub)
+- [x] Normalization layer for price, stock, seller reliability
+- [x] 15-minute stock refresh scheduling
 
 Acceptance criteria
 - Normalized offers endpoint returns consistent fields across sources
@@ -151,7 +151,7 @@ Acceptance criteria
 ## Roadmap Alignment
 
 Faz 1 — Genesis (Q1–Q2 2026)
-- [ ] Master Model Library (Automotive & Drone)
+- [ ] Master Model Library (Automotive, Drone, Phones, Tablets, etc.)
 - [ ] 50 marketplace integrations (scraper coverage baseline)
 - [ ] AI OEM Matching v1
 
