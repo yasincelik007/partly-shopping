@@ -1,10 +1,45 @@
 import Fastify from 'fastify'
 import { getDriver } from './neo4j'
+import { extractFeatures, scoreMatch, MatchInput } from './ai'
 
 const fastify = Fastify({ logger: true })
 
 fastify.get('/health', async () => {
   return { ok: true }
+})
+
+fastify.post('/ai/match', async (req, reply) => {
+  const body = req.body as MatchInput
+  const feats = extractFeatures(body || {})
+  const driver = getDriver()
+  const session = driver.session()
+  try {
+    // Pull candidate parts by OEM or token hints
+    const res = await session.run(
+      `
+      MATCH (p:Part)
+      WHERE ($oems = [] OR toUpper(p.oem_code) IN $oems)
+         OR any(t IN $tokens WHERE toUpper(p.name) CONTAINS t OR toUpper(p.part_id) CONTAINS t)
+      RETURN p
+      LIMIT 25
+      `,
+      { oems: feats.oemCandidates, tokens: feats.tokens }
+    )
+    const candidates = res.records.map(r => r.get('p').properties)
+    const scored = candidates
+      .map((c: any) => ({ part: c, score: scoreMatch(c, feats) }))
+      .sort((a, b) => b.score.confidence - a.score.confidence)
+
+    const top = scored[0]?.score
+    return {
+      input: body,
+      features: feats,
+      best: top || { confidence: 0, rationale: [] },
+      candidates: scored.slice(0, 5),
+    }
+  } finally {
+    await session.close()
+  }
 })
 
 fastify.get('/part/:id', async (req, reply) => {

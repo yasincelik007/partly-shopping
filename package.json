@@ -8,7 +8,8 @@
     "build": "tsc -b && vite build",
     "preview": "vite preview",
     "dev:server": "tsx server/index.ts",
-    "seed:neo4j": "tsx server/seed.ts"
+    "seed:neo4j": "tsx server/seed.ts",
+    "verify:neo4j": "tsx server/verify.ts"
   },
   "dependencies": {
     "@react-three/drei": "^9.105.6",

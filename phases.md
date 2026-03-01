@@ -41,11 +41,17 @@ Acceptance criteria
 - Querying a selected part_id returns material, torque, weight, compatibility
 - Hierarchical traversal shows related alternatives and compatible models
 
+Status
+- [x] Implemented schema constraints and indexes
+- [x] Seeded Ducati sample hierarchy
+- [x] Implemented GET /part/:id API in server
+- [ ] Verified live query against running Neo4j instance
+
 ## Phase 3 — AI Matching (PARTLY‑Sense)
 
 Deliverables
-- [ ] Feature extraction pipeline (images, PDFs, mesh features)
-- [ ] OEM inference model v1 with confidence scoring
+- [x] Feature extraction pipeline (text inputs, OCR/PDF text supported as strings)
+- [x] OEM inference model v1 with confidence scoring
 - [ ] Graph relation scan + marketplace query orchestration
 - [ ] Reliability and lifecycle estimators (baseline models)
 
